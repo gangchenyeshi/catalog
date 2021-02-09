@@ -1,0 +1,158 @@
+- Why React?
+Ans. React is SPA(Single page Application), It allow developer to create web application that can change Data, without reloading hold web page,  only specific portion of user want to access.
+component : which we can resuse the component 
+JSX is js and html together
+
+
+- Write a React component that displays a title h1 with marked "Hello" followed by the name passed in props.
+        
+Ans.    constructor (props){
+            super(props);
+            this.state = {
+                name: "Yeshi"
+            }
+        }
+        render() {
+            return(
+                <h1>Hello {this.props.name}</h1>
+            );
+        }
+
+- What is a prop for?
+Ans: Props(property) is a object/ special keyword which is create in parent component for passing the data from one component to another. object is static not can change in parent component, but same object when we use in children or other component we can modify by using state object. it can pass data for uni-direction from parent to child.
+
+- What method can be used to display part of each element of an array?
+Ans: map
+
+- Thanks to this method, complete the following code to display the Last name and First name in a p tag of each of the learners
+ 
+import React from 'react';
+
+class Promo extends React.Component {
+	apprenants = [
+		{firstName: "John", lastName: "Doe" age:12}, 
+		{firstName: "Jane", lastName: "Roe" age:22}, 
+		{firstName: "Larry", lastName: "Loe" age:19}
+	];
+
+	render() {
+		return (
+			// Insert code here
+            {this.apprenants.map((name) => {
+                return 
+                <p>
+                {name.firstname} {name.lastName}
+                </p>
+            })}
+            {this.apprenants.filter((age) => {
+                return 
+                <p>
+                {age >= 18}
+                </p>
+            })}
+		);
+	}
+}
+
+export default Promo;
+
+
+- In which case should we use a state? What are the differences with props?
+Ans: both the method hold information and that influence render for output.
+    Props are variable hold and passing from parent component to child
+    state are variable hold in data, and we can reuse the data and change the data in any component.
+
+- How can we pass information from a parent to his child? and from a child to its parent?
+Ans: create a method or function which retrieve or pass the information Like onChange, onClick etc
+
+- On which HTML element can we retrieve the onClick event?
+Ans: All element
+    <input onclick={this.clickMethod}></input>
+
+- Complete the following code to retrieve in the state name, the value entered by the user in the input
+
+import React from 'react';
+
+class Form extends React.Component {
+	constructor() {
+			// Insert code here
+      super();
+      this.state = {
+          name : '',
+      }      
+      this.onChange = this.onChange.bind(this)
+	}
+    onChange = (event)=> {
+        this.setState ({
+            name : event.target.value
+        })
+    }
+	onChange(event) {
+			// Insert code here	
+        this.setState ({
+            name : event.target.value
+        })
+	}
+
+	render() {
+		return (
+			<input value={this.state.name} onChange={this.onChange} />
+		);
+	}
+}
+
+export default Form;
+```
+
+- What is an asynchronous callback function used for?
+Ans: asynchronous callback function is a function when statement/ argument calling the function, during that time code are executing or running the background the function calling, when background code execute finished, it call the callback function.
+
+- What is the difference between a callback function and a promise?
+Ans. Both the callback and promise are call the function inside the function.
+promise is ES6 version call the function one after another
+
+- Explain the lifecycle of a React component as well as possible.
+Ans: In React our component live and die, it is the cycle of the React
+there has a 3 phase Mounting, Updating and Unmounting.
+-Mounting it create the first time on the page
+        1. constructor create and declare the method
+        2. render the component for display the constructor
+        3. componentDidMount to fetch the from outside the component
+-Updating is change the Date and re-display
+-Unmounting is the User change the page and component no longer needed
+
+- Complete the following code which will look for the following pokemon: [https://pokeapi.co/api/v2/pokemon/17 Danemark(https://pokeapi.co/api/v2/pokemon/17) and which displays its last name
+
+import React from 'react';
+
+class Pokemon extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			name: ""
+		}
+	}
+    
+componentDidMount() {
+    fetch("https://pokeapi.co/api/v2/pokemon/17")
+    .then(response => response.json)
+    .then(response => {
+        this.setState ({
+            name: response.name
+        })
+    })
+}
+
+	render() {
+		return (
+			<p>My pokemon is: {this.state.name}</p>
+		);
+	}
+}
+
+export default Form;
+```
+
+- Comment mettre à jour le code ci dessus pour gerer une possible erreur lors de la récupération des infos du pokémon ?
+- A quoi sert un Router ?
+- Quels sont les 4 principaux composants d'un Router et à quoi servent ils ?

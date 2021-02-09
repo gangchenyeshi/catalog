@@ -1,6 +1,7 @@
 import React from 'react';
-import Homepage from './Components/Homepage';
 import { BrowserRouter, Route, Link, Switch} from "react-router-dom";
+import Films from './Components/Films';
+import Film from './Components/Film';
 
 const movies = [
   {
@@ -92,20 +93,22 @@ class App extends React.Component {
       
     }
   }
+  renderContent = () => {
+    return (
+      <Switch>
+        <Route path="/movies.id"><Films /></Route>
+        <Route path="/movies.id, movies.title"><Film /></Route>
+      </Switch>
+    )
+  }
   render() {
     return (
       <BrowserRouter>
-        <ol>
-          {movies.map((movielist) => {  // movies is name the variable declare in global, movielist is parameter you write to access the object
-            return <li>
-                  <Link to="/{movie.id}">
-                  {movielist.title}
-                  </Link>
-                  </li>   //now movielist is same as one object or parameter in that you can access the title
+        <Films mymovie={movies}></Films>
+        
 
-            })
-          }
-        </ol>
+
+        <Film movieEach={movies}></Film>
       </BrowserRouter>
     );
   }
