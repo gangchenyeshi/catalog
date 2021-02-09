@@ -96,19 +96,20 @@ class App extends React.Component {
   renderContent = () => {
     return (
       <Switch>
-        <Route path="/movies.id"><Films /></Route>
-        <Route path="/movies.id, movies.title"><Film /></Route>
+        <Route exact path="/"><Films mymovie={movies}></Films></Route>
+        <Route path="/movies.id"><Film mymovie={movies}></Film></Route>
+        <Route path="*"><Films mymovie={movies}></Films></Route>
       </Switch>
     )
   }
   render() {
     return (
       <BrowserRouter>
-        <Films mymovie={movies}></Films>
+        
         
 
 
-        <Film movieEach={movies}></Film>
+        {this.renderContent()}
       </BrowserRouter>
     );
   }

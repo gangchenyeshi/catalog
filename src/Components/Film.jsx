@@ -6,14 +6,14 @@ class Film extends React.Component {
     render () {
         return (
             <div>
-                {this.props.movieEach.map((movie) => {
+                {this.props.movieEach.map((movieDetail) => {
                     return (
                         <div>
-                        <p>{movie.title}</p>
-                        <p>{movie.director}</p>
-                        <p>{movie.stars}</p>
-                        <img src={`${movie.image}`}></img>
-                        <p>{movie.description}</p>
+                        <p>{movieDetail.title}</p>
+                        <p>{movieDetail.director}</p>
+                        <p>{movieDetail.stars}</p>
+                        <img src={`${movieDetail.image}`}></img>
+                        <p>{movieDetail.description}</p>
                         </div>
                     )
                     
